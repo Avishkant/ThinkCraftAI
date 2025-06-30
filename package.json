@@ -1,8 +1,7 @@
 {
-  "name": "vite-project",
+  "name": "thinkcraftai",
   "private": true,
-  "homepage": "http://www.thinkcraftai.tech/",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
