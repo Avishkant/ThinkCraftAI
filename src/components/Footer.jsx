@@ -8,9 +8,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text text-transparent">
-              ThinkCraft.ai
-            </h3>
+            <Link to="/" className="inline-block group">
+              <h3 className="text-2xl font-bold mb-4 hover:scale-105 transition-all duration-300">
+                <span className="text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-colors duration-300">Think</span>
+                <span className="text-cyan-400 drop-shadow-lg group-hover:text-cyan-300 transition-colors duration-300">Craft</span>
+                <span className="text-cyan-300 drop-shadow-lg group-hover:text-cyan-200 transition-colors duration-300">.ai</span>
+              </h3>
+            </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Founded by NIT graduates, we empower businesses with cutting-edge AI solutions. 
               We craft intelligent systems that transform the way you work and innovate.
@@ -91,7 +95,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
             <div className="text-center md:text-left">
               <p className="text-gray-400">
-                © 2025 ThinkCraft.ai. All rights reserved. | Built with ❤️ by NIT graduates
+                © 2025 <span className="text-blue-400">Think</span><span className="text-cyan-400">Craft</span><span className="text-cyan-300">.ai</span>. All rights reserved. | Built with ❤️ by NIT graduates
               </p>
             </div>
             <div className="text-center md:text-right">

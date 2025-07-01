@@ -332,7 +332,8 @@ const Services = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link 
               to="/contact"
-              className="group bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 border-2 border-white"
+              className="group bg-white/30 px-8 py-4 rounded-lg font-extrabold hover:bg-white/40 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 border border-white/50"
+              style={{color: '#ffffff'}}
             >
               <span className="flex items-center justify-center">
                 <span className="mr-2">📅</span>

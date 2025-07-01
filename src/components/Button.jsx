@@ -20,14 +20,24 @@ const Button = ({
   // Variant styles
   const variants = {
     primary: "bg-white text-black border-2 border-white hover:bg-gray-100 hover:text-black hover:shadow-2xl focus:ring-blue-500",
-    secondary: "bg-indigo-600 border-2 border-indigo-400 text-white hover:bg-indigo-700 hover:border-indigo-300 hover:shadow-2xl focus:ring-indigo-500",
+    secondary: "bg-yellow-300 text-black border-2 border-yellow-200 hover:bg-yellow-200 hover:border-yellow-100 hover:text-black font-bold hover:shadow-2xl focus:ring-yellow-400",
     outline: "border-2 border-blue-600 text-black bg-transparent hover:bg-blue-600 hover:text-white hover:shadow-xl focus:ring-blue-500",
     clean: "bg-transparent text-gray-800 border-0 hover:text-blue-600 hover:scale-100 focus:ring-blue-500",
-    gradient: "bg-gradient-to-r from-indigo-500 to-blue-600 text-white border-0 hover:from-indigo-600 hover:to-blue-700 hover:shadow-2xl focus:ring-blue-500",
+    gradient: "bg-gradient-to-r from-blue-600 to-indigo-700 font-bold border-0 hover:from-blue-700 hover:to-indigo-800 hover:shadow-2xl focus:ring-blue-500" + " !text-white hover:!text-white",
     danger: "bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 hover:shadow-xl focus:ring-red-500",
-    solid: "bg-blue-600 text-white border-2 border-blue-600 hover:bg-blue-700 hover:border-blue-700 hover:shadow-2xl focus:ring-blue-500"
+    solid: "bg-slate-800 text-white font-medium border border-slate-800 hover:bg-slate-900 hover:border-slate-900 hover:text-white hover:shadow-lg focus:ring-slate-600",
+    professional: "bg-slate-50 text-slate-700 border border-slate-200 hover:bg-white hover:text-slate-900 hover:border-slate-300 hover:shadow-lg font-medium focus:ring-slate-400"
   };
   
+
+
+
+
+
+
+
+
+
   // Size styles
   const sizes = {
     sm: "px-4 py-2 text-sm",

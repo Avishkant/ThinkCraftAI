@@ -65,7 +65,7 @@ const About = () => {
     { number: "50+", label: "Projects Completed", icon: "🎯" },
     { number: "25+", label: "Happy Clients", icon: "😊" },
     { number: "100%", label: "Success Rate", icon: "✅" },
-    { number: "4", label: "NIT Graduates", icon: "🎓" },
+    { number: "10                                                                                                                                                                                                                                                                                                                                                                                                                                                       ", label: "NIT Graduates", icon: "🎓" },
   ];
 
   return (
@@ -110,7 +110,7 @@ const About = () => {
               <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-800">
                 <p>
-                  Founded in 2022 by a group of NIT graduates, ThinkCraft.ai emerged from a simple belief: 
+                  Founded in 2025 by a group of NIT graduates, ThinkCraft.ai emerged from a simple belief: 
                   artificial intelligence should be accessible, ethical, and transformative for businesses of all sizes. 
                   Our founders, armed with strong technical backgrounds from premier engineering institutes, 
                   recognized the gap between cutting-edge AI research and practical business applications.

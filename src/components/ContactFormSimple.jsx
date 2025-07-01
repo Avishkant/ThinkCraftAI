@@ -1,50 +1,30 @@
+// Alternative ContactForm using FormSubmit (no setup required)
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import Button from './Button';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+const ContactFormSimple = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus(null);
-
+    
+    const formData = new FormData(e.target);
+    
     try {
-      // EmailJS configuration
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'thiinkcraft@gmail.com', // Your email
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      const response = await fetch('https://formsubmit.co/thiinkcraft@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
       
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (response.ok) {
+        alert('Message sent successfully! We\'ll get back to you soon.');
+        e.target.reset();
+      } else {
+        throw new Error('Failed to send');
+      }
     } catch (error) {
-      console.error('EmailJS error:', error);
-      setSubmitStatus('error');
+      alert('Failed to send message. Please try again or email us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -55,6 +35,11 @@ const ContactForm = () => {
       <h3 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
       
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Hidden fields for FormSubmit configuration */}
+        <input type="hidden" name="_subject" value="New Contact Form Submission from ThinkCraft.ai" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-800 mb-2">
@@ -64,8 +49,6 @@ const ContactForm = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
               placeholder="Your full name"
@@ -80,8 +63,6 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
               placeholder="your.email@example.com"
@@ -97,8 +78,6 @@ const ContactForm = () => {
             type="text"
             id="subject"
             name="subject"
-            value={formData.subject}
-            onChange={handleChange}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
             placeholder="What's this about?"
@@ -112,8 +91,6 @@ const ContactForm = () => {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleChange}
             required
             rows={6}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
@@ -132,21 +109,6 @@ const ContactForm = () => {
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>
         </div>
-
-        {/* Status Messages */}
-        {submitStatus === 'success' && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-            <p className="font-semibold">Message sent successfully!</p>
-            <p>Thank you for your message. We'll get back to you within 24 hours.</p>
-          </div>
-        )}
-
-        {submitStatus === 'error' && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            <p className="font-semibold">Failed to send message</p>
-            <p>Please try again or contact us directly at thiinkcraft@gmail.com</p>
-          </div>
-        )}
       </form>
 
       <div className="mt-6 text-sm text-gray-800">
@@ -159,4 +121,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactFormSimple;

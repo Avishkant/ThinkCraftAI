@@ -1,9 +1,60 @@
 // src/pages/Home.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Button, { IconButton } from '../components/Button';
 
-export default function Home() {
+const Home = () => {
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-slide-in-up');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+          
+          // Animate counters
+          const counters = entry.target.querySelectorAll('.counter');
+          counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const increment = target / 50;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.textContent = target === 100 ? '100%' : `${target}+`;
+                clearInterval(timer);
+              } else {
+                counter.textContent = Math.ceil(current) === 100 ? '100%' : `${Math.ceil(current)}+`;
+              }
+            }, 30);
+          });
+        }
+      });
+    }, observerOptions);
+
+    sectionsRef.current.forEach((section) => {
+      if (section) {
+        section.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -83,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Intro Section */}
-      <section className="py-16 bg-gray-50">
+      <section ref={addToRefs} className="py-16 bg-gray-50 transform transition-all duration-700">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-gray-800 mb-8 transform hover:scale-105 transition-transform duration-300">What is ThinkCraft.ai?</h2>
@@ -95,11 +146,11 @@ export default function Home() {
             <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center group">
-                  <div className="text-3xl font-bold text-blue-600 group-hover:text-blue-700 transform group-hover:scale-110 transition-all duration-300">50+</div>
+                  <div className="text-3xl font-bold text-blue-600 group-hover:text-blue-700 transform group-hover:scale-110 transition-all duration-300 counter" data-target="50">0</div>
                   <div className="text-gray-800">Projects Delivered</div>
                 </div>
                 <div className="text-center group">
-                  <div className="text-3xl font-bold text-blue-600 group-hover:text-blue-700 transform group-hover:scale-110 transition-all duration-300">100%</div>
+                  <div className="text-3xl font-bold text-blue-600 group-hover:text-blue-700 transform group-hover:scale-110 transition-all duration-300 counter" data-target="100">0</div>
                   <div className="text-gray-800">Client Satisfaction</div>
                 </div>
                 <div className="text-center group">
@@ -113,26 +164,26 @@ export default function Home() {
       </section>
 
       {/* Tech Highlights Section */}
-      <section className="py-16">
+      <section ref={addToRefs} className="py-16 transform transition-all duration-700">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-12 transform hover:scale-105 transition-transform duration-300">Our Tech Expertise</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               <div className="text-4xl md:text-6xl mb-4 group-hover:animate-bounce">🤖</div>
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">AI Integration</h3>
               <p className="text-gray-800 text-xs md:text-sm">Intelligent automation and machine learning solutions</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-fade-in-up" style={{animationDelay: '0.2s'}}>
               <div className="text-4xl md:text-6xl mb-4 group-hover:animate-spin">⚙️</div>
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Automation</h3>
               <p className="text-gray-800 text-xs md:text-sm">Streamline processes and boost efficiency</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-fade-in-up" style={{animationDelay: '0.3s'}}>
               <div className="text-4xl md:text-6xl mb-4 group-hover:animate-pulse">💻</div>
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Web Development</h3>
               <p className="text-gray-800 text-xs md:text-sm">Modern, responsive web applications</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-fade-in-up" style={{animationDelay: '0.4s'}}>
               <div className="text-4xl md:text-6xl mb-4 group-hover:animate-bounce">☁️</div>
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Cloud Consulting</h3>
               <p className="text-gray-800 text-xs md:text-sm">Scalable cloud infrastructure solutions</p>
@@ -142,26 +193,26 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gray-50">
+      <section ref={addToRefs} className="py-16 bg-gray-50 transform transition-all duration-700">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-gray-800 mb-12 transform hover:scale-105 transition-transform duration-300">Why Choose ThinkCraft.ai?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-slide-in-left" style={{animationDelay: '0.1s'}}>
                 <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors duration-300">
                   <span className="text-2xl group-hover:animate-bounce">🎓</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">NIT-Founded Team</h3>
                 <p className="text-gray-800">Founded by graduates from prestigious National Institute of Technology, bringing academic excellence to real-world solutions.</p>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-slide-in-up" style={{animationDelay: '0.2s'}}>
                 <div className="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-indigo-200 transition-colors duration-300">
                   <span className="text-2xl group-hover:animate-pulse">🚀</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Smart & Scalable</h3>
                 <p className="text-gray-800">Our solutions are designed to grow with your business, ensuring reliability and future-proof technology.</p>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+              <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-slide-in-right" style={{animationDelay: '0.3s'}}>
                 <div className="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-indigo-200 transition-colors duration-300">
                   <span className="text-2xl group-hover:animate-spin">💡</span>
                 </div>
@@ -174,27 +225,27 @@ export default function Home() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-16">
+      <section ref={addToRefs} className="py-16 transform transition-all duration-700">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4 transform hover:scale-105 transition-transform duration-300">Our Services</h2>
             <p className="text-xl text-gray-800">Comprehensive solutions for your digital transformation</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-zoom-in" style={{animationDelay: '0.1s'}}>
               <h3 className="text-xl font-semibold mb-3 group-hover:animate-pulse">AI & Machine Learning</h3>
               <p className="mb-4">Custom AI solutions to automate and optimize your business processes.</p>
-              <Link to="/services" className="text-gray-900 hover:text-black transition group-hover:animate-bounce inline-block font-bold">Learn More →</Link>
+              <Link to="/services" className="bg-white/30 px-4 py-2 rounded font-extrabold hover:bg-white/40 transition group-hover:animate-bounce inline-block border border-white/50" style={{color: '#ffffff'}}>Learn More →</Link>
             </div>
-            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-zoom-in" style={{animationDelay: '0.2s'}}>
               <h3 className="text-xl font-semibold mb-3 group-hover:animate-pulse">Web & App Development</h3>
               <p className="mb-4">Modern, responsive applications built with cutting-edge technologies.</p>
-              <Link to="/services" className="text-gray-900 hover:text-black transition group-hover:animate-bounce inline-block font-bold">Learn More →</Link>
+              <Link to="/services" className="bg-white/30 px-4 py-2 rounded font-extrabold hover:bg-white/40 transition group-hover:animate-bounce inline-block border border-white/50" style={{color: '#ffffff'}}>Learn More →</Link>
             </div>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group">
+            <div className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-6 rounded-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 group animate-zoom-in" style={{animationDelay: '0.3s'}}>
               <h3 className="text-xl font-semibold mb-3 group-hover:animate-pulse">Cloud & DevOps</h3>
               <p className="mb-4">Scalable cloud infrastructure and seamless deployment solutions.</p>
-              <Link to="/services" className="text-gray-900 hover:text-black transition group-hover:animate-bounce inline-block font-bold">Learn More →</Link>
+              <Link to="/services" className="bg-white/30 px-4 py-2 rounded font-extrabold hover:bg-white/40 transition group-hover:animate-bounce inline-block border border-white/50" style={{color: '#ffffff'}}>Learn More →</Link>
             </div>
           </div>
         </div>
@@ -244,4 +295,6 @@ export default function Home() {
       </section>
     </div>
   );
-}
+};
+
+export default Home;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ContactForm from '../components/ContactForm';
+import ContactFormSimple from '../components/ContactFormSimple';
 import Button, { IconButton } from '../components/Button';
 
 const Contact = () => {
@@ -85,7 +85,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <ContactForm />
+              <ContactFormSimple />
             </div>
 
             {/* Additional Information */}
