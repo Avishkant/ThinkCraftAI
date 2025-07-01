@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ContactFormSimple from '../components/ContactFormSimple';
+import ContactForm from '../components/ContactForm';
 import Button, { IconButton } from '../components/Button';
 
 const Contact = () => {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  useEffect(() => {
+    // Check if we're coming back from a successful form submission
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setShowSuccessMessage(true);
+      // Remove the success parameter from URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
   const contactInfo = [
     {
       title: "Email",
@@ -85,7 +96,30 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <ContactFormSimple />
+              {showSuccessMessage && (
+                <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <span className="text-2xl">✅</span>
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="text-sm font-medium text-green-800">Message Sent Successfully!</h3>
+                      <div className="mt-1 text-sm text-green-700">
+                        <p>Thank you for contacting us. We've received your message and will get back to you within 24 hours.</p>
+                      </div>
+                      <div className="mt-3">
+                        <button
+                          onClick={() => setShowSuccessMessage(false)}
+                          className="text-sm bg-green-100 text-green-800 px-3 py-1 rounded hover:bg-green-200 transition-colors"
+                        >
+                          Dismiss
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <ContactForm />
             </div>
 
             {/* Additional Information */}
