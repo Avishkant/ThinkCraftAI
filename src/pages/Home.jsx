@@ -58,44 +58,44 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white py-20 overflow-hidden min-h-screen flex items-center">
+      <section className="relative bg-gradient-to-br from-blue-900 via-indigo-900 to-cyan-900 text-white py-20 overflow-hidden min-h-screen flex items-center">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 opacity-30 animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-500 to-cyan-500 opacity-30 animate-pulse"></div>
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20 animate-bounce" style={{animationDelay: '0s'}}></div>
-            <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg opacity-30 animate-pulse rotate-45" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-25 animate-ping" style={{animationDelay: '2s'}}></div>
-            <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 animate-bounce" style={{animationDelay: '0.5s'}}></div>
-            <div className="absolute top-1/2 left-20 w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full opacity-25 animate-pulse" style={{animationDelay: '1.5s'}}></div>
-            <div className="absolute top-60 right-1/4 w-28 h-28 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg opacity-15 animate-bounce rotate-12" style={{animationDelay: '3s'}}></div>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full opacity-20 animate-bounce" style={{animationDelay: '0s'}}></div>
+            <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-lg opacity-30 animate-pulse rotate-45" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-25 animate-ping" style={{animationDelay: '2s'}}></div>
+            <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full opacity-20 animate-bounce" style={{animationDelay: '0.5s'}}></div>
+            <div className="absolute top-1/2 left-20 w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full opacity-25 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+            <div className="absolute top-60 right-1/4 w-28 h-28 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg opacity-15 animate-bounce rotate-12" style={{animationDelay: '3s'}}></div>
           </div>
         </div>
         
         {/* Dynamic Gradient Orbs */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400 via-pink-400 to-red-400 rounded-full opacity-20 animate-spin" style={{animationDuration: '20s'}}></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-blue-400 via-cyan-400 to-green-400 rounded-full opacity-20 animate-spin" style={{animationDuration: '25s', animationDirection: 'reverse'}}></div>
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-bl from-yellow-400 via-orange-400 to-red-400 rounded-full opacity-15 animate-pulse" style={{animationDuration: '8s'}}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400 via-indigo-400 to-cyan-400 rounded-full opacity-20 animate-spin" style={{animationDuration: '20s'}}></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400 via-blue-400 to-cyan-400 rounded-full opacity-20 animate-spin" style={{animationDuration: '25s', animationDirection: 'reverse'}}></div>
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-bl from-sky-400 via-blue-400 to-indigo-400 rounded-full opacity-15 animate-pulse" style={{animationDuration: '8s'}}></div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in-up max-w-6xl mx-auto">
             {/* Enhanced Main Heading */}
             <h1 className="text-7xl md:text-8xl font-black mb-8 leading-tight">
-              <span className="block bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent animate-pulse">
+              <span className="block bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent animate-pulse">
                 Powering
               </span>
-              <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mt-2 transform hover:scale-105 transition-transform duration-500">
+              <span className="block bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent mt-2 transform hover:scale-105 transition-transform duration-500">
                 Digital Revolution
               </span>
-              <span className="block text-2xl md:text-3xl font-light mt-4 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-300 bg-clip-text text-transparent">
+              <span className="block text-2xl md:text-3xl font-light mt-4 bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
                 with Smart AI Solutions
               </span>
             </h1>
             
             {/* Enhanced Subtitle */}
             <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto opacity-90 leading-relaxed font-light">
-              Welcome to <span className="font-semibold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">ThinkCraft.ai</span>, where NIT graduates transform businesses through 
-              <span className="font-semibold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent"> intelligent technology solutions </span> 
+              Welcome to <span className="font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">ThinkCraft.ai</span>, where NIT graduates transform businesses through 
+              <span className="font-semibold bg-gradient-to-r from-indigo-300 to-blue-300 bg-clip-text text-transparent"> intelligent technology solutions </span> 
                and cutting-edge innovation.
             </p>
             
