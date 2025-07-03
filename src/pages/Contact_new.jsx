@@ -58,6 +58,45 @@ const Contact = () => {
     { day: "Sunday", hours: "Closed" }
   ];
 
+  const benefits = [
+    {
+      icon: "🚀",
+      title: "Rapid Development",
+      description: "Get your AI solutions deployed faster with our agile development approach and proven methodologies.",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: "🎯",
+      title: "Custom Solutions",
+      description: "Every business is unique. We tailor our AI solutions to fit your specific needs and objectives.",
+      color: "from-indigo-500 to-indigo-600"
+    },
+    {
+      icon: "🛡️",
+      title: "Enterprise Security",
+      description: "Your data is safe with us. We implement enterprise-grade security measures and compliance standards.",
+      color: "from-blue-600 to-indigo-600"
+    },
+    {
+      icon: "🔄",
+      title: "Continuous Support",
+      description: "24/7 monitoring, maintenance, and support to ensure your AI systems run smoothly at all times.",
+      color: "from-indigo-500 to-blue-500"
+    },
+    {
+      icon: "💡",
+      title: "Innovation First",
+      description: "We stay ahead of the curve with cutting-edge AI technologies and industry best practices.",
+      color: "from-blue-500 to-indigo-500"
+    },
+    {
+      icon: "📈",
+      title: "Proven ROI",
+      description: "Our clients see measurable results and improved efficiency within the first months of deployment.",
+      color: "from-indigo-600 to-blue-600"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -122,7 +161,7 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="text-5xl mb-6 animate-float relative z-10" style={{ animationDelay: `${index * 0.2}s` }}>{info.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 group-hover:text-blue-700 transition-colors">{info.title}</h3>
-                <p className="font-bold mb-3 text-lg text-blue-600 relative z-10 animate-shimmer">{info.value}</p>
+                <p className={`font-semibold mb-3 text-lg bg-gradient-to-r ${info.color} bg-clip-text text-transparent relative z-10 animate-shimmer`}>{info.value}</p>
                 <p className="text-gray-600 text-sm leading-relaxed relative z-10 group-hover:text-gray-700 transition-colors">{info.description}</p>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
@@ -280,44 +319,7 @@ const Contact = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🚀",
-                title: "Rapid Development",
-                description: "Get your AI solutions deployed faster with our agile development approach and proven methodologies.",
-                color: "from-blue-500 to-blue-600"
-              },
-              {
-                icon: "🎯",
-                title: "Custom Solutions",
-                description: "Every business is unique. We tailor our AI solutions to fit your specific needs and objectives.",
-                color: "from-indigo-500 to-indigo-600"
-              },
-              {
-                icon: "🛡️",
-                title: "Enterprise Security",
-                description: "Your data is safe with us. We implement enterprise-grade security measures and compliance standards.",
-                color: "from-blue-600 to-indigo-600"
-              },
-              {
-                icon: "🔄",
-                title: "Continuous Support",
-                description: "24/7 monitoring, maintenance, and support to ensure your AI systems run smoothly at all times.",
-                color: "from-indigo-500 to-blue-500"
-              },
-              {
-                icon: "💡",
-                title: "Innovation First",
-                description: "We stay ahead of the curve with cutting-edge AI technologies and industry best practices.",
-                color: "from-blue-500 to-indigo-500"
-              },
-              {
-                icon: "📈",
-                title: "Proven ROI",
-                description: "Our clients see measurable results and improved efficiency within the first months of deployment.",
-                color: "from-indigo-600 to-blue-600"
-              }
-            ].map((benefit, index) => (
+            {benefits.map((benefit, index) => (
               <div key={index} className="group animate-fade-in-up bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-gray-200 relative overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className={`bg-gradient-to-r ${benefit.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10`}>
@@ -372,46 +374,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* Location Section */}
-      {/* <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Visit Our Office</h2>
-            <p className="text-xl text-gray-800">We're located in the heart of Tech City</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg p-8 md:p-12 text-center">
-            <div className="text-4xl md:text-6xl mb-4">🏢</div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">ThinkCraft.ai Headquarters</h3>
-            <p className="text-base md:text-lg text-gray-800 mb-4">123 AI Street, Tech City, TC 12345</p>
-            <p className="text-gray-800 mb-6 text-sm md:text-base">Modern office space designed for innovation and collaboration</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button variant="gradient" size="md">
-                Get Directions
-              </Button>
-              <Button variant="outline" size="md">
-                Virtual Tour
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Emergency Contact */}
-      {/* <section className="py-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
-          <p className="text-lg mb-4">For urgent technical issues or critical system failures:</p>
-          <div className="flex justify-center items-center space-x-4">
-            <span className="text-2xl">🚨</span>
-            <a href="tel:+15551234567" className="text-xl font-semibold hover:underline transition duration-300">
-              Emergency Hotline: +1 (555) 123-4567
-            </a>
-            <span className="text-2xl">🚨</span>
-          </div>
-          <p className="text-sm mt-4 opacity-90">Available 24/7 for critical support</p>
-        </div>
-      </section> */}
     </div>
   );
 };

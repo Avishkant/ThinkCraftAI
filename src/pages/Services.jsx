@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button, { IconButton } from '../components/Button';
+import '../styles/animations.css';
 
 const Services = () => {
   const services = [
@@ -10,6 +11,7 @@ const Services = () => {
       features: ["Predictive Analytics", "Data Classification", "Pattern Recognition", "Automated Decision Making"],
       icon: "🤖",
       color: "from-blue-500 to-blue-600",
+      gradient: "bg-gradient-to-r from-blue-500/20 to-blue-600/20",
       popular: true
     },
     {
@@ -18,6 +20,7 @@ const Services = () => {
       features: ["React/Next.js Development", "Mobile App Development", "E-commerce Solutions", "Progressive Web Apps"],
       icon: "💻",
       color: "from-indigo-500 to-indigo-600",
+      gradient: "bg-gradient-to-r from-indigo-500/20 to-indigo-600/20",
       popular: false
     },
     {
@@ -26,6 +29,7 @@ const Services = () => {
       features: ["Cloud Migration", "DevOps Automation", "Infrastructure as Code", "CI/CD Pipelines"],
       icon: "☁️",
       color: "from-blue-600 to-indigo-600",
+      gradient: "bg-gradient-to-r from-blue-600/20 to-indigo-600/20",
       popular: false
     },
     {
@@ -34,6 +38,7 @@ const Services = () => {
       features: ["Workflow Automation", "Document Processing", "CRM Integration", "Process Optimization"],
       icon: "⚙️",
       color: "from-indigo-500 to-blue-500",
+      gradient: "bg-gradient-to-r from-indigo-500/20 to-blue-500/20",
       popular: true
     },
     {
@@ -42,6 +47,7 @@ const Services = () => {
       features: ["Business Intelligence", "Real-time Analytics", "Data Visualization", "Performance Dashboards"],
       icon: "📊",
       color: "from-blue-500 to-indigo-500",
+      gradient: "bg-gradient-to-r from-blue-500/20 to-indigo-500/20",
       popular: false
     },
     {
@@ -50,6 +56,7 @@ const Services = () => {
       features: ["AI Strategy Development", "Technology Assessment", "Implementation Planning", "Team Training"],
       icon: "💡",
       color: "from-indigo-600 to-blue-600",
+      gradient: "bg-gradient-to-r from-indigo-600/20 to-blue-600/20",
       popular: false
     }
   ];
@@ -97,65 +104,85 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <section className="bg-gradient-to-br from-indigo-600 via-blue-600 to-blue-700 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our AI Services</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Comprehensive AI solutions designed to transform your business operations and drive innovation.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <IconButton 
-              to="/contact" 
-              variant="primary"
-              size="lg"
-              icon="🚀"
-            >
-              Get Started
-            </IconButton>
-            <IconButton 
-              to="/about" 
-              variant="secondary"
-              size="lg"
-              icon="👥"
-            >
-              About Our Team
-            </IconButton>
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-blue-600 to-blue-700 text-white py-24">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-blue-600/20"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="animate-fade-in-up">
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent animate-gradient-x">
+              Our AI Services
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90">
+              Comprehensive AI solutions designed to transform your business operations and drive innovation.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+              <Button
+                to="/contact"
+                variant="primary"
+                size="lg"
+                icon="🚀"
+                className="group bg-white text-blue-600 hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-blue-500/25"
+              >
+                Get Started
+                <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+              <Button
+                to="/about"
+                variant="secondary"
+                size="lg"
+                icon="👥"
+                className="group border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
+              >
+                About Our Team
+                <span className="ml-2 transform group-hover:rotate-12 transition-transform">✨</span>
+              </Button>
+            </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">What We Offer</h2>
-            <p className="text-xl text-gray-800">End-to-end solutions for your digital transformation journey</p>
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              What We Offer
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              End-to-end solutions for your digital transformation journey
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className={`bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 relative ${service.popular ? 'border-2 border-yellow-400' : ''}`}>
+              <div key={index} className={`group animate-fade-in-up bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl p-8 transform hover:scale-105 transition-all duration-300 relative overflow-hidden border border-gray-200 ${service.popular ? 'border-2 border-yellow-400' : ''}`} style={{ animationDelay: `${index * 0.1}s` }}>
                 {service.popular && (
-                  <div className="absolute -top-3 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
+                  <div className="absolute -top-3 left-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                    🔥 Most Popular
                   </div>
                 )}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full transform translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform duration-500"></div>
                 
-                <div className={`bg-gradient-to-r ${service.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6`}>
-                  <span className="text-2xl text-white">{service.icon}</span>
+                <div className={`bg-gradient-to-r ${service.color} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10`}>
+                  <span className="text-3xl text-white animate-float">{service.icon}</span>
                 </div>
                 
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">{service.title}</h3>
-                <p className="text-gray-600 mb-6 text-center">{service.description}</p>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center relative z-10">{service.title}</h3>
+                <p className="text-gray-600 mb-6 text-center leading-relaxed relative z-10">{service.description}</p>
                 
-                <div className="space-y-2 mb-6">
+                <div className="space-y-3 mb-8 relative z-10">
                   <h4 className="font-semibold text-gray-800">Key Features:</h4>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="text-gray-800 flex items-center">
-                        <svg className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <li key={featureIndex} className="text-gray-700 flex items-center">
+                        <svg className="w-4 h-4 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         {feature}
@@ -164,13 +191,17 @@ const Services = () => {
                   </ul>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center relative z-10">
                   <Button 
                     to="/contact"
                     variant="solid"
                     size="md"
+                    className={`w-full group bg-gradient-to-r ${service.color} hover:shadow-lg transform hover:scale-105 transition-all duration-300 !text-white hover:!text-white font-bold`}
                   >
                     Learn More
+                    <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </Button>
                 </div>
               </div>
